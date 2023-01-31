@@ -145,3 +145,13 @@ gitignoreの書き方例
 ```bash
 git mv 元ファイル名 変更したいファイル名
 ```
+
+ブランチの表示
+```bash
+git branch
+```
+
+ブランチ作成
+```bash
+git branch ブランチ名
+```
