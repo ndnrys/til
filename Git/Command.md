@@ -155,3 +155,36 @@ git branch
 ```bash
 git branch ブランチ名
 ```
+
+ブランチ切り替え
+```bash
+git checkout ブランチ名
+```
+
+マージ  
+現在いるブランチに取り込む
+```bash
+git merge 取り込みたいブランチ名
+```
+
+コンフリクトが起きた後は、git add, git commit
+
+ブランチ削除  
+大文字：マージされていなくても削除可能  
+小文字：マージされているもののみ削除可能  
+```bash
+git branch -d ブランチ名
+git branch -D ブランチ名
+```
+
+ブランチ名変更  
+-m:moveの略
+```bash
+git branch -m 変更前ブランチ名 変更したいブランチ名
+```
+
+ブランチ作成→切り替え  
+-b:ブランチの略
+```bash
+git checkout -b ブランチ名
+```
