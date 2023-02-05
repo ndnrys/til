@@ -188,3 +188,24 @@ git branch -m 変更前ブランチ名 変更したいブランチ名
 ```bash
 git checkout -b ブランチ名
 ```
+
+コミットリセット
+最新のコミットのひとつ前のSHA-1ハッシュ値を指定  
+--hard: ワークツリーとステージングエリアにHEADの内容をコピーする  
+--soft: ワークツリーとステージングエリアはそのまま -> git statusで差分表示される  
+```bash
+git reset --hard 戻したいSHA-1ハッシュ値
+```
+
+コミット打消し
+```bash
+git revert 打ち消したいSHA-1ハッシュ値
+git revert HEAD
+```
+
+reset と revertの使い分け  
+共同開発者がいる？
+  -> yes: 共同開発者に影響を与える可能性があるのでresetは使わない  
+  -> no: コミット履歴に残したい？  
+    -> yes: revert  
+    -> no: reset  
