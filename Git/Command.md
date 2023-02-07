@@ -58,9 +58,16 @@ git ls-files
 git commit -m "メッセージをかく"
 ```
 
-コミット履歴確認
+コミット履歴確認  
+--oneline: SHA-1ハッシュ値＋コメントのみ一行表示  
+--graph: 視覚的に見えるようにする  
+--all: ブランチからたどれるコミットだけではなく、全てのコミットを参照可能
 ```bash
 git log
+git log --oneline
+git log --graph
+git log ファイル名
+git log --all
 ```
 
 git log統計オプション（何行追加されて、何行削除されたか）
@@ -212,3 +219,15 @@ reset と revertの使い分け
   -> no: コミット履歴に残したい？  
     -> yes: revert  
     -> no: reset  
+
+ヘルプ  
+全般のヘルプ
+```bash
+git help
+```
+もっと細かくヘルプが見たい->別ページが開かれる
+```bash
+git help 見たいコマンド（例：log）
+```
+
+
