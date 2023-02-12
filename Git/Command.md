@@ -274,3 +274,12 @@ stash削除
 ```bash
 git stash clear
 ```
+
+操作履歴確認
+```bash
+git relog
+```
+relogの作時点まで戻る
+```bash
+git reset --hard HEAD@{数字}
+```
