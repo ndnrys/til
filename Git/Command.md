@@ -283,3 +283,8 @@ relogの作時点まで戻る
 ```bash
 git reset --hard HEAD@{数字}
 ```
+
+ファイルの変更履歴
+```bash
+git blame ファイル名
+```
