@@ -251,3 +251,26 @@ git tag タグ名 SHA-1ハッシュ値
 ```bash
 git tag -d タグ名
 ```
+
+変更を一時的に退避  
+修正してしまった（コミットしてない）が、別ブランチで作業したい  
+ワーキングエリアに一時的に退避  
+```bash
+git stash
+```
+
+現在stashの中に入っているものを表示
+```bash
+git stash list
+```
+
+stashを取り出す
+--index: ステージングエリアの内容を破棄せずに取り出す
+```bash
+git stash pop
+```
+
+stash削除
+```bash
+git stash clear
+```
