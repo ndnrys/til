@@ -5,27 +5,25 @@ Docker構築手順
 ### URL
 https://www.docker.com/products/docker-desktop/
 
-## チュートリアル
-
-### リポジトリのクローン
-Getting Startedプロジェクトは、イメージをビルドし、コンテナとして実行するために必要なすべてのものを含む、シンプルなGitHubリポジトリです。
-
+### バージョン
 ```docker
-docker run --name repo alpine/git clone https://github.com/docker/getting-started.git
-docker cp repo:/git/getting-started/ .
+docker --vershion
 ```
 
-### イメージの構築
-Dockerイメージは、あなたのコンテナのためのプライベートなファイルシステムです。これは、コンテナに必要なすべてのファイルとコードを提供します。
+### コンテナ起動
 ```docker
-getting-started>docker build -t docker101tutorial .
+docker run コンテナ名
 ```
 
-### コンテナ実行
-前のステップで構築したイメージに基づき、コンテナを起動します。コンテナを実行すると、マシンの他の部分から安全に分離されたプライベートなリソースでアプリケーションが起動します。
+### コンテナ操作
+root@のようになれば、OK  
+Linuxコンテナを捜査している状態  
+抜けるにはCtrl + c
 ```docker
-docker run -d -p 80:80 --name docker-tutorial docker101tutorial
+docker run -it ubuntu bash
 ```
 
-### イメージを保存して共有する
-Docker Hubにイメージを保存して共有することで、他のユーザーが簡単にイメージをダウンロードして、任意の宛先マシンで実行できるようになります。
+### Dockerイメージダウンロード
+```docker
+docker pull イメージ名
+```
