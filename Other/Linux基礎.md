@@ -46,3 +46,32 @@ which ファイル名
 ldd パス
 ```
 
+### Webサーバインストール準備
+```
+sudo apt update
+```
+### nginx（エンジンエックス）インストール
+```
+sudo apt install nginx
+```
+### プロセス一覧
+```
+ps aux
+```
+### ツリー構造で見る
+```
+sudo apt install psmisc
+```
+```
+pstree -p
+```
+
+### vim: E325
+Ctrl + cとかで中断したことがある場合、多重オープンとなる  
+対処法  
+スワップファイルを確認  
+.swo, .swpとかがスワップファイル  
+これをrm（削除）する
+```
+ls -la
+```
