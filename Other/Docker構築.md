@@ -1,62 +1,91 @@
 # Docker構築
 ## 概要
 Docker構築手順
-## URL
+## インストール
+### URL
 https://www.docker.com/products/docker-desktop/
 
+### WSL2有効化 - Windows
+```
+wsl --install
+```
+
+## Hello World
+### run
+```
+docker run ubuntu:20.04 echo hello world
+```
+
+### ローカルにあるイメージの一覧
+```
+docker images
+```
+
+### Bash を起動
+```
+docker run -it ubuntu:20.04 bash
+```
+
+### 終了
+```
+exit
+```
+
+## Ruby開発環境
+Linuxと違い、sudoは不要
+### update
+```
+apt update
+```
+
+### Ruby, RubyBundlerをインストール
+```
+apt install ruby ruby-bundler
+```
+
+### コンテナ確認
+-a: 停止しているコンテナも表示
+```
+docker ps
+```
+
+### docker commit でイメージ化する
+```
+docker commit [コンテナID] [つけたいコンテナ名]:[つけたいタグ名]
+```
+
+### イメージ化したコンテナの起動例
+例)  
+my-ruby: コンテナ名  
+commit: タグ名
+```
+docker run -it my-ruby:commit bash
+```
+※ docker commitでイメージ化するのは望ましくない  
+手作業で環境構築してしまうとどのようにつくったのかわからない  
+よって、Dockerfileを使う  
+イメージ構築手順をコード化: Infrastructure as Code
+
 ## Dockerfile
-Dockerfile: Dockerイメージを作成するために必要な設定ファイル  
-ファイル名：Dockerfile
-ファイルの中身
-```txt
-FROM nginx
+### Dockerfile例
 ```
-FROM イメージの元となるイメージを指定
-nginxはWebサーバの一つ  
+FROM ubuntu:20.04 // base image
 
-### Dockerfile１からイメージ作成
--t: イメージに名前を付ける  
-例ではnginx  
-. は、現在のディレクトを指す
-```docker
-docker build オプション パス
-例：docker build -t nginx .
+RUN apt update
+RUN apt install -y ruby ruby-bundler  // -y: インストール時のY/n
 ```
 
-
-### バージョン
-```docker
-docker --version
+### Dockerfile build
+.: 忘れないでつける
+```
+docker build -t [コンテナ名]:[タグ名] .
 ```
 
-### コンテナ起動
-```docker
-docker run コンテナ名
+## ボリュームによるファイルの共有
+$PWD: 現在のディレクトリ
+-w: ホストとコンテナ内のディレクトリを紐づける
+```
+docker run -it -v ${PWD}/opt/myapp -w /opt/myapp my-ruby:dockerfile bash
+docker run -v ${PWD}/opt/myapp -w /opt/myapp my-ruby:dockerfile ruby hello.rb
 ```
 
-### コンテナ操作
-root@のようになれば、OK  
-Linuxコンテナを捜査している状態  
-抜けるにはCtrl + c
-```docker
-docker run -it ubuntu bash
-```
-
-### Dockerイメージダウンロード
-```docker
-docker pull イメージ名
-```
-
-### Dockerイメージの一覧確認
-```docker
-docker image ls
-```
-
-### Dcokerイメージのコンテナ起動
-httpdというコンテナを起動  
--p: ローカルとコンテナのポートを紐づけ  
-ローカル80ポートアクセスとコンテナの80ポートにアクセス
-```docker
-docker run -p 80:80 httpd
-http://127.0.0.1:80
-```
