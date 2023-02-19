@@ -87,5 +87,6 @@ $PWD: 現在のディレクトリ
 ```
 docker run -it -v ${PWD}/opt/myapp -w /opt/myapp my-ruby:dockerfile bash
 docker run -v ${PWD}/opt/myapp -w /opt/myapp my-ruby:dockerfile ruby hello.rb
+docker run -v ${PWD}/sinatra:/opt/myapp -w /opt/myapp -d -p 4567:4567 my-ruby:dockerfile ruby myapp.rb -o 0.0.0.0
 ```
 
