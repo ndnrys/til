@@ -4,17 +4,17 @@ Pythonの仮想環境のコマンドなど
 ## 詳細
 
 ### venv仮想環境作成
-```cmd
+```pwsh
 py -m venv 仮想環境名
 ```
 
 ### 仮想環境起動
-```cmd
+```pwsh
 venvで作成したディレクトリ名\Scripts\activate
 ```
 
 ### pipインストール
-```cmd
+```pwsh
 py -m pip install --upgrade pip
 ```
 
@@ -32,12 +32,12 @@ Django~=3.2.10
 ```
 
 ### Djangoインストール
-```cmd
+```pwsh
 pip install -r requirements.txt
 ```
 
 ### プロジェクト作成
-```cmd
+```pwsh
 django-admin.exe startproject プロジェクト名 .
 ```
 以下の構成になる  
@@ -89,6 +89,15 @@ DATABASES = {
 ```
 
 セットアップ実行
-```cmd
+```pwsh
 py manage.py migrate
 ```
+
+### サーバー起動確認
+manage.pyがあるディレクトリに移動
+```pwsh
+py manage.py runserver
+```
+以下にアクセス  
+`http://127.0.0.1:8000/`  
+Ctrl + Breakで停止
