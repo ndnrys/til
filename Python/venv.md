@@ -101,3 +101,44 @@ py manage.py runserver
 以下にアクセス  
 `http://127.0.0.1:8000/`  
 Ctrl + Breakで停止
+
+### アプリケーションの作成
+```pwsh
+py manage.py startapp アプリ名
+```
+以下の構成になる
+djangogirls  
+├── アプリ名  
+│   ├── admin.py  
+│   ├── apps.py  
+│   ├── __init__.py  
+│   ├── migrations  
+│   │   └── __init__.py  
+│   ├── models.py  
+│   ├── tests.py  
+│   └── views.py  
+├── db.sqlite3  
+├── manage.py  
+├── mysite  
+│   ├── __init__.py  
+│   ├── settings.py  
+│   ├── urls.py  
+│   └── wsgi.py  
+├── myvenv  
+│   └── ...  
+└── requirements.txt  
+
+```py mysite/settings.py
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'blog.apps.BlogConfig', # 追加
+]
+```
+
+続き：  
+https://tutorial.djangogirls.org/ja/django_models/#%E3%83%96%E3%83%AD%E3%82%B0%E3%83%9D%E3%82%B9%E3%83%88%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90
