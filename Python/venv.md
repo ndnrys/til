@@ -27,7 +27,7 @@ requirementsファイルは pip install でインストールする依存関係�
 └─── requirements.txt
 
 作成したディレクトリにrequirements.txt追加
-```txt
+```txt requirements.txt
 Django~=3.2.10
 ```
 
@@ -36,5 +36,59 @@ Django~=3.2.10
 pip install -r requirements.txt
 ```
 
-続き：  
-https://tutorial.djangogirls.org/ja/django_start_project/
+### プロジェクト作成
+```cmd
+django-admin.exe startproject プロジェクト名 .
+```
+以下の構成になる  
+djangogirls  
+├── manage.py  
+├── プロジェクト名  
+│   ├── __init__.py  
+│   ├── settings.py  
+│   ├── urls.py  
+│   └── wsgi.py  
+├── myvenv  
+│   └── ...  
+└── requirements.txt  
+
+manage.py: インストールすることなくコンピュータ上でWebサーバーを起動することができる  
+settings.py: ウェブサイトの設定  
+urls.py: urlresolver(Djangoがviewを見つける仕組み)で使われるパターンリスト  
+
+### 設定変更
+タイムゾーン変更
+```py settings.py
+TIME_ZONE = 'Asia/Tokyo'
+```
+言語変更
+```py settings.py
+LANGUAGE_CODE = 'ja'
+```
+静的ファイルパスの追加  
+STATIC_ROOTをSTATIC_URLの下に入力
+```py settings.py
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
+```
+DEBUG: True + ALLOWED_HOSTSが空の場合、自動的に['localhost', '127.0.0.1', '[::1]']の3ホストに対してチェックされる  
+これから使うPythonAnywhereのホストネームが含まれていないため、以下を設定
+```py settings.py
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+```
+
+### DBセットアップ
+すでに書かれている（sqlite3）
+```py settings.py
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+```
+
+セットアップ実行
+```cmd
+py manage.py migrate
+```
