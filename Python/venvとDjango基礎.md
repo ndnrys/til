@@ -1,16 +1,19 @@
-# venv
+# venvとDjango基礎
 ## 概要
-Pythonの仮想環境のコマンドなど
-## 詳細
+Pythonの仮想環境のコマンドやDjangoの基礎  
+djangogirlsで学習
+## 仮想環境関連
 
 ### venv仮想環境作成
 ```pwsh
 py -m venv 仮想環境名
+py -m venv myvenv
 ```
 
 ### 仮想環境起動
 ```pwsh
-venvで作成したディレクトリ名\Scripts\activate
+\venvで作成したディレクトリ名\Scripts\activate
+\myvenv\Scripts\activate
 ```
 
 ### pipインストール
@@ -39,11 +42,12 @@ pip install -r requirements.txt
 ### プロジェクト作成
 ```pwsh
 django-admin.exe startproject プロジェクト名 .
+django-admin.exe startproject mysite .
 ```
 以下の構成になる  
 djangogirls  
 ├── manage.py  
-├── プロジェクト名  
+├── mysite  
 │   ├── __init__.py  
 │   ├── settings.py  
 │   ├── urls.py  
@@ -105,10 +109,11 @@ Ctrl + Breakで停止
 ### アプリケーションの作成
 ```pwsh
 py manage.py startapp アプリ名
+py manage.py startapp blog
 ```
 以下の構成になる
 djangogirls  
-├── アプリ名  
+├── blog  
 │   ├── admin.py  
 │   ├── apps.py  
 │   ├── __init__.py  
@@ -140,5 +145,25 @@ INSTALLED_APPS = [
 ]
 ```
 
-続き：  
-https://tutorial.djangogirls.org/ja/django_models/#%E3%83%96%E3%83%AD%E3%82%B0%E3%83%9D%E3%82%B9%E3%83%88%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90
+## Django基礎
+__: アンダーバー２つ、呼び方はダンダー（ダブルアンダースコア）
+
+### 新しいモデルをDjangoに登録する
+```pwsh
+py manage.py makemigrations アプリ名
+py manage.py makemigrations blog
+```
+
+### Djangoが作った移行ファイルをDBに追加
+```pwsh
+py manage.py migrate アプリ名
+py manage.py migrate blog
+```
+
+### 管理者アカウント作成
+```pwsh
+py manage.py createsuperuser
+```
+
+続き：
+https://tutorial.djangogirls.org/ja/deploy/#pythonanywhere%E3%81%A7%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B
