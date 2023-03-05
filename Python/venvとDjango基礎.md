@@ -165,5 +165,13 @@ py manage.py migrate blog
 py manage.py createsuperuser
 ```
 
+### PythonAnywhereとgithubの連携について
+参考：https://ios-docs.dev/20210813support-for-password/  
+ユーザー名はgithubのもの
+パスワードは上記サイトの操作をしたトークンを実行
+```pwsh
+pa_autoconfigure_django.py --python=3.6 https://github.com/<your-github-username>/my-first-blog.git
+```
+
 続き：
-https://tutorial.djangogirls.org/ja/deploy/#pythonanywhere%E3%81%A7%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B
+https://tutorial.djangogirls.org/ja/django_orm/
