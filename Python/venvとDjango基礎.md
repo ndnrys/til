@@ -173,5 +173,47 @@ py manage.py createsuperuser
 pa_autoconfigure_django.py --python=3.6 https://github.com/<your-github-username>/my-first-blog.git
 ```
 
-続き：
-https://tutorial.djangogirls.org/ja/django_orm/
+### Django Shell起動
+```pwsh
+python manage.py shell
+```
+
+### Post Select
+```py
+from blog.models import Post
+Post.objects.all()
+```
+
+### Post Insert
+```py
+from django.contrib.auth.models import User
+me = User.objects.get(username='ola')
+Post.objects.create(author=me, title='Sample title', text='Test')
+```
+
+### Post Select - 条件付き
+```py
+# titleを含む情報を抽出
+Post.objects.filter(title__contains='title')
+# 現在より以前の情報を抽出
+from django.utils import timezone
+Post.objects.filter(published_date__lte=timezone.now())
+```
+### 公開
+```py
+ post = Post.objects.get(title="Sample title")
+ post.publish()
+ ```
+
+ ### ソート
+ ```py
+ # 昇順
+ Post.objects.order_by('created_date')
+ # 降順
+ Post.objects.order_by('-created_date')
+ ```
+
+ ### メソッドチェーンによる複雑なクエリ
+ ```py
+ Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+ ```
