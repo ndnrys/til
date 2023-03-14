@@ -39,7 +39,7 @@ Django~=3.2.10
 pip install -r requirements.txt
 ```
 
-### プロジェクト作成
+### 設定ディレクトリ作成
 ```pwsh
 django-admin.exe startproject プロジェクト名 .
 django-admin.exe startproject mysite .
@@ -92,7 +92,7 @@ DATABASES = {
     # MySQL
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mysql',
+        'NAME': '[DB名]',
         'USER': 'root',
         'PASSWORD': 'adminadmin'
     }
